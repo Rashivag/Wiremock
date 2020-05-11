@@ -1,4 +1,5 @@
 package mocks;
+import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -29,7 +30,7 @@ public class MockTest {
     public void verifyWhenMatchingURL() throws IOException {
 
         // Creating a REST stub for a service endpoint using regular expression
-        stubFor(get(urlPathMatching("/sample/.*"))
+        WireMock.stubFor(get(urlPathMatching("/sample/.*"))
                 .willReturn(aResponse()
                         .withStatus(200)
                         .withHeader("Content-Type", APPLICATION_JSON)
